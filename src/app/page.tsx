@@ -9,6 +9,9 @@ export default function Home() {
                 <Accordion header="Header 1">
                     Content of the Accordion 1
                 </Accordion>
+                <Accordion header="Header 1" disabled startExpanded>
+                    Content of the Accordion 1
+                </Accordion>
             </div>
         </main>
     )
