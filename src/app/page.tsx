@@ -9,8 +9,14 @@ export default function Home() {
                 <Accordion header="Header 1">
                     Content of the Accordion 1
                 </Accordion>
-                <Accordion header="Header 1" disabled startExpanded>
-                    Content of the Accordion 1
+                <Accordion header="Header 2" disabled startExpanded>
+                    Content of the Accordion 2
+                </Accordion>
+                <Accordion header="Header 3">
+                    Content of the Accordion 3
+                </Accordion>
+                <Accordion header="Header 4">
+                    Content of the Accordion 4
                 </Accordion>
             </div>
         </main>
