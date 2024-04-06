@@ -1,13 +1,13 @@
 import uniqueID from '@/helper/uniqueID'
 import useToggle from '@/hooks/useToggle'
+import { StringNumberJSX } from '@/types/StringNumberJSX'
 import React, { FC, useEffect, useRef, useState } from 'react'
 
-// if the Accordion is expanded by Space or Enter, the focus automatically jumps to the Accordion panel
-// this means that users who rely on screen reader support or are only working with their keyboard
-// do not have to press two keys in order to let the screen reader read aloud the panel text
+// TODO: build logic that lets a screen reader know which text to read aloud
+// if the child element is a ReactNode
 
 type AccordionProps = {
-    children: string
+    children: StringNumberJSX
     header: string
     disabled?: boolean
     startExpanded?: boolean
@@ -144,7 +144,7 @@ const AccordionHeader = (props: {
 }
 
 const AccordionPanel = (props: {
-    children: string
+    children: StringNumberJSX
     expanded: boolean
     handleClosePanel: (e: React.KeyboardEvent<HTMLDivElement>) => void
     headerId: string

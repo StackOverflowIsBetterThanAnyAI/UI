@@ -12,11 +12,9 @@ export default function Home() {
                 <Accordion header="Header 2" disabled startExpanded>
                     Content of the Accordion 2
                 </Accordion>
-                <Accordion header="Header 3">
-                    Content of the Accordion 3
-                </Accordion>
+                <Accordion header="Header 3">{187}</Accordion>
                 <Accordion header="Header 4">
-                    Content of the Accordion 4
+                    {<div>Hello World!</div>}
                 </Accordion>
             </div>
         </main>
