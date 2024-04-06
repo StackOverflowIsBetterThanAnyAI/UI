@@ -9,7 +9,7 @@ type ToggleProps = {
     startValue?: boolean
 }
 
-const useToggle = ({ startValue }: ToggleProps): ToggleHook => {
+export const useToggle = ({ startValue }: ToggleProps): ToggleHook => {
     const [status, setStatus] = useState(startValue || false)
 
     const toggleStatus = () => {
@@ -18,5 +18,3 @@ const useToggle = ({ startValue }: ToggleProps): ToggleHook => {
 
     return { status, toggleStatus }
 }
-
-export default useToggle
