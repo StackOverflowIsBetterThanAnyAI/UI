@@ -50,20 +50,21 @@ const Accordion: FC<AccordionProps> = ({
     // sets IDs on mount
     useEffect(() => {
         setId()
-        console.log(panelRef.current)
         return () => {
             resetId()
         }
     }, [])
 
+    // checks if the panel is expanded and focusses the panel if so
+    useEffect(() => {
+        if (expanded && panelRef.current && !disabled) {
+            panelRef.current.focus()
+        }
+    }, [expanded, panelRef.current])
+
     // focusses the header element of the currently selected accordion
     const focusCurrentHeader = () => {
         headerRef.current?.focus()
-    }
-
-    // focusses the panel element of the currently selected accordion
-    const focusCurrentPanel = () => {
-        panelRef.current?.focus()
     }
 
     // closes the accordion panel and sets focus to the currently selected accordion header
@@ -71,15 +72,6 @@ const Accordion: FC<AccordionProps> = ({
         if ((e.key === 'Enter' || e.key === ' ') && !disabled) {
             e.preventDefault()
             focusCurrentHeader()
-            handleToggleExpanded()
-        }
-    }
-
-    // opens the accordion panel and sets focus to the currently selected accordion panel
-    const handleOpenPanel = (e: React.KeyboardEvent<HTMLDivElement>) => {
-        if ((e.key === 'Enter' || e.key === ' ') && !disabled) {
-            e.preventDefault()
-            focusCurrentPanel()
             handleToggleExpanded()
         }
     }

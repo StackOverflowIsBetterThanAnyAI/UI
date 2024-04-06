@@ -34,7 +34,6 @@
         "listEmittedFiles": true,
         "noErrorTruncation": true,
         "skipLibCheck": true,
-        "emitDeclarationOnly": true,
         "plugins": [
             {
                 "name": "next"
@@ -46,7 +45,8 @@
         "incremental": true,
         "resolveJsonModule": true,
         "isolatedModules": true,
-        "sourceMap": true
+        "sourceMap": true,
+        "noEmit": true
     },
     "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
     "exclude": ["node_modules"]
