@@ -1,4 +1,3 @@
-import { accessibleText } from '@/helper/accessibleText'
 import { uniqueID } from '@/helper/uniqueID'
 import { useToggle } from '@/hooks/useToggle'
 import { StringNumberJSX } from '@/types/StringNumberJSX'
