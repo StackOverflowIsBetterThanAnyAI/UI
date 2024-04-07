@@ -1,5 +1,13 @@
 import { uniqueID } from '@/helper/uniqueID'
 import { useToggle } from '@/hooks/useToggle'
+import {
+    BACKGROUND_COLOR,
+    PRIMARY_COLOR,
+    PRIMARY_COLOR_ACTIVE,
+    PRIMARY_COLOR_HOVER,
+    SECONDARY_COLOR,
+    TEXT_COLOR,
+} from '@/styleguide/colors'
 import { StringNumberJSX } from '@/types/StringNumberJSX'
 import React, { FC, useEffect, useRef, useState } from 'react'
 
@@ -77,7 +85,9 @@ const Accordion: FC<AccordionProps> = ({
     }
 
     return (
-        <div className="bg-slate-200 p-1 m-1 max-w-72 min-w-36 rounded-lg">
+        <div
+            className={`bg-${BACKGROUND_COLOR} p-1 m-1 max-w-72 min-w-36 rounded-lg`}
+        >
             <AccordionHeader
                 disabled={disabled}
                 expanded={expanded}
@@ -123,9 +133,9 @@ const AccordionHeader = (props: {
             <button
                 className={`${
                     !disabled
-                        ? 'hover:bg-cyan-300 active:bg-cyan-400 cursor-pointer'
+                        ? `hover:bg-${PRIMARY_COLOR_HOVER} active:bg-${PRIMARY_COLOR_ACTIVE} cursor-pointer`
                         : 'cursor-not-allowed opacity-85'
-                } bg-cyan-200 text-gray-800 rounded-md p-2 w-full flex justify-between gap-8 items-center text-balance text-left font-semibold`}
+                } bg-${PRIMARY_COLOR} text-${TEXT_COLOR} rounded-md p-2 w-full flex justify-between gap-8 items-center text-balance text-left font-semibold`}
                 id={headerId}
                 onClick={!disabled ? handleToggleExpanded : undefined}
                 ref={headerRef}
@@ -163,7 +173,7 @@ const AccordionPanel = (props: {
     return (
         expanded && (
             <div
-                className="p-2 bg-red-400 rounded-md mt-1 text-balance"
+                className={`p-2 bg-${SECONDARY_COLOR} rounded-md mt-1 text-balance`}
                 id={panelId}
                 onKeyDown={handleClosePanel}
                 ref={panelRef}
