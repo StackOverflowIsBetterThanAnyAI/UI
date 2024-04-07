@@ -1,3 +1,4 @@
+import { accessibleText } from '@/helper/accessibleText'
 import { uniqueID } from '@/helper/uniqueID'
 import { useToggle } from '@/hooks/useToggle'
 import { StringNumberJSX } from '@/types/StringNumberJSX'
@@ -168,10 +169,6 @@ const AccordionPanel = (props: {
                 onKeyDown={handleClosePanel}
                 ref={panelRef}
                 tabIndex={0}
-                // not necessary, will be replaced by aria-label probably
-                // aria-label contains the panel content if it is a string,
-                // the alt attribute if it is an image only
-                // or any other kind of text if it is a ReactNode
                 aria-labelledby={headerId}
             >
                 {children}

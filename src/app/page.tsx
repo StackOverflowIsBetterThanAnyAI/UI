@@ -29,6 +29,15 @@ export default function Home() {
                         </div>
                     }
                 </Accordion>
+                <Accordion header="Header 5">
+                    <div>Hello Michi!</div>
+                </Accordion>
+                <Accordion header="Header 5">
+                    <div>
+                        Hello Michi!
+                        <div>Hello World!</div>
+                    </div>
+                </Accordion>
             </div>
         </main>
     )
