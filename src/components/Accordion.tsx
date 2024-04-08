@@ -1,11 +1,11 @@
 import { uniqueID } from '@/helper/uniqueID'
 import { useToggle } from '@/hooks/useToggle'
-import { StringNumberJSX } from '@/types/StringNumberJSX'
+import { StringNumberJSX } from '@/types/types'
 import React, { FC, useEffect, useRef, useState } from 'react'
 
 const COLOR_VARIANTS = {
     primary: 'bg-cyan-300 hover:bg-cyan-400 active:bg-cyan-500',
-    primary_disabled: 'bg-cyan-300',
+    primary_disabled: 'bg-cyan-200',
     secondary: 'bg-red-400',
     text: 'text-gray-800',
     background: 'bg-slate-200',
