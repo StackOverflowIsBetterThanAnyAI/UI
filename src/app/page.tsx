@@ -20,20 +20,49 @@ export default function Home() {
                 <Button
                     ariaLable="eins acht sieben"
                     lang="de"
-                    onClick={() => console.log('Hello')}
+                    onClick={() => console.log()}
                 >
                     {187}
                 </Button>
-                <Button onClick={() => console.log('Hello')}>
+                <Button onClick={() => console.log()} secondary>
+                    Hello World
+                </Button>
+                <Button
+                    onClick={() => console.log()}
+                    secondary
+                    disabled
+                    ariaLable="Hello Michael"
+                >
                     Hello World
                 </Button>
                 <Button
                     disabled
-                    onClick={() => console.log('Hello')}
+                    onClick={() => console.log()}
                     icon={{
                         src: starImage,
                         alt: 'a happy star which is smiling at you',
                         size: 50,
+                    }}
+                >
+                    Hello World Image
+                </Button>
+                <Button
+                    onClick={() => console.log()}
+                    href="#"
+                    icon={{
+                        src: starImage,
+                        alt: 'a happy star which is smiling at you',
+                        size: 50,
+                    }}
+                >
+                    Hello World Href
+                </Button>
+                <Button
+                    onClick={() => console.log()}
+                    icon={{
+                        src: starImage,
+                        alt: 'a happy star which is smiling at you',
+                        size: 250,
                     }}
                 >
                     Hello World

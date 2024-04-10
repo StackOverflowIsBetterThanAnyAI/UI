@@ -4,10 +4,16 @@ import { StringNumberJSX } from '@/types/types'
 import React, { FC, useEffect, useRef, useState } from 'react'
 
 const COLOR_VARIANTS = {
-    primary: 'bg-cyan-300 hover:bg-cyan-400 active:bg-cyan-500',
-    primary_disabled: 'bg-cyan-200',
-    secondary: 'bg-red-400',
-    text: 'text-gray-800',
+    primary:
+        'bg-cyan-400 hover:bg-cyan-500 active:bg-cyan-600 focus:outline-blue-600 focus:outline active:ring-2 ring-blue-200',
+    primary_disabled: 'bg-cyan-300 focus:outline-zinc-700 focus:outline',
+    primary_text: 'text-zinc-900',
+    secondary: 'bg-red-1000 focus:outline-red-600 focus:outline',
+    secondary_disabled: 'bg-red-1000 focus:outline-zinc-700 focus:outline',
+    secondary_text: 'text-slate-50',
+    dark: 'bg-stone-700 hover:bg-stone-800 active:bg-stone-900 focus:outline-stone-900 focus:outline active:ring-2 ring-stone-100',
+    dark_disabled: 'bg-stone-500 focus:outline-stone-300 focus:outline',
+    dark_text: 'text-stone-100',
     background: 'bg-slate-200',
 }
 
@@ -67,22 +73,30 @@ const Accordion: FC<AccordionProps> = ({
         headerRef.current?.focus()
     }
 
+    const handleOpenPanel = () => {
+        handleToggleExpanded()
+    }
+
     const handleClosePanel = (e: React.KeyboardEvent<HTMLDivElement>) => {
         if ((e.key === 'Enter' || e.key === ' ') && !disabled) {
             e.preventDefault()
             focusCurrentHeader()
             handleToggleExpanded()
         }
+        if (e.key === ' ' && disabled) {
+            //disables scrolling
+            e.preventDefault()
+        }
     }
 
     return (
         <div
-            className={`${COLOR_VARIANTS.background} p-1 m-1 max-w-72 min-w-36 rounded-lg`}
+            className={`${COLOR_VARIANTS.background} p-1.5 m-1 max-w-72 min-w-36 rounded-lg`}
         >
             <AccordionHeader
                 disabled={disabled}
                 expanded={expanded}
-                handleToggleExpanded={handleToggleExpanded}
+                handleOpenPanel={handleOpenPanel}
                 header={header}
                 headerId={headerId}
                 headerRef={headerRef}
@@ -90,6 +104,7 @@ const Accordion: FC<AccordionProps> = ({
             />
             <AccordionPanel
                 children={children}
+                disabled={disabled}
                 expanded={expanded}
                 handleClosePanel={handleClosePanel}
                 headerId={headerId}
@@ -103,7 +118,7 @@ const Accordion: FC<AccordionProps> = ({
 const AccordionHeader = (props: {
     disabled: boolean
     expanded: boolean
-    handleToggleExpanded: () => void
+    handleOpenPanel: () => void
     header: string
     headerId: string
     headerRef: React.RefObject<HTMLButtonElement>
@@ -112,25 +127,27 @@ const AccordionHeader = (props: {
     const {
         disabled,
         expanded,
-        handleToggleExpanded,
+        handleOpenPanel,
         header,
         headerId,
         headerRef,
         panelId,
     } = props
 
+    const headerClassName = `${
+        !disabled
+            ? `${COLOR_VARIANTS.primary} cursor-pointer`
+            : `${COLOR_VARIANTS.primary_disabled} cursor-not-allowed opacity-85`
+    } ${
+        COLOR_VARIANTS.primary_text
+    } rounded-md p-2 w-full flex justify-between gap-8 items-center text-balance text-left font-semibold outline-offset-2 outline-2 text-lg`
+
     return (
         <div role="heading" aria-level={3}>
             <button
-                className={`${
-                    !disabled
-                        ? `${COLOR_VARIANTS.primary} cursor-pointer`
-                        : `${COLOR_VARIANTS.primary_disabled} cursor-not-allowed opacity-85`
-                } ${
-                    COLOR_VARIANTS.text
-                } rounded-md p-2 w-full flex justify-between gap-8 items-center text-balance text-left font-semibold`}
+                className={headerClassName}
                 id={headerId}
-                onClick={!disabled ? handleToggleExpanded : undefined}
+                onClick={!disabled ? handleOpenPanel : undefined}
                 ref={headerRef}
                 aria-label={header}
                 aria-expanded={expanded}
@@ -148,6 +165,7 @@ const AccordionHeader = (props: {
 
 const AccordionPanel = (props: {
     children: StringNumberJSX
+    disabled: boolean
     expanded: boolean
     handleClosePanel: (e: React.KeyboardEvent<HTMLDivElement>) => void
     headerId: string
@@ -156,6 +174,7 @@ const AccordionPanel = (props: {
 }) => {
     const {
         children,
+        disabled,
         expanded,
         handleClosePanel,
         headerId,
@@ -163,10 +182,16 @@ const AccordionPanel = (props: {
         panelRef,
     } = props
 
+    const panelClassName = `p-2 ${
+        disabled ? COLOR_VARIANTS.secondary_disabled : COLOR_VARIANTS.secondary
+    } ${
+        COLOR_VARIANTS.secondary_text
+    } outline-offset-2 outline-2 rounded-md mt-1.5 text-balance cursor-text text-base`
+
     return (
         expanded && (
             <div
-                className={`p-2 ${COLOR_VARIANTS.secondary} rounded-md mt-1 text-balance`}
+                className={panelClassName}
                 id={panelId}
                 onKeyDown={handleClosePanel}
                 ref={panelRef}
