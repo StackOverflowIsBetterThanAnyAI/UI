@@ -128,7 +128,7 @@ const Accordion: FC<AccordionProps> = ({
 
     return (
         <div
-            className={`${COLOR_VARIANTS.background} p-1.5 m-1 max-w-72 min-w-36 rounded-lg`}
+            className={`${COLOR_VARIANTS.background} p-1.5 m-1 max-w-72 min-w-36 rounded-lg w-full`}
         >
             <AccordionHeader
                 disabled={disabled}
