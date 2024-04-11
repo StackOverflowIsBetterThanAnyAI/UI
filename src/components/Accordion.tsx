@@ -6,26 +6,45 @@ import React, { FC, useEffect, useRef, useState } from 'react'
 const COLOR_VARIANTS = {
     primary:
         'bg-cyan-400 hover:bg-cyan-500 active:bg-cyan-600 focus:outline-blue-600 focus:outline active:ring-2 ring-blue-200',
-    primary_disabled: 'bg-cyan-300 focus:outline-zinc-700 focus:outline',
-    primary_text: 'text-zinc-900',
-    secondary: 'bg-red-1000 focus:outline-red-600 focus:outline',
-    secondary_disabled: 'bg-red-1000 focus:outline-zinc-700 focus:outline',
+    primary_disabled: 'bg-cyan-300 focus:outline-stone-500 focus:outline',
+    primary_text: 'text-stone-900',
+
+    secondary: 'bg-red-1000 focus:outline-red-500 focus:outline',
+    secondary_disabled: 'bg-red-1000 focus:outline-stone-500 focus:outline',
     secondary_text: 'text-slate-50',
-    dark: 'bg-stone-700 hover:bg-stone-800 active:bg-stone-900 focus:outline-stone-900 focus:outline active:ring-2 ring-stone-100',
-    dark_disabled: 'bg-stone-500 focus:outline-stone-300 focus:outline',
+
+    dark: 'bg-stone-700 hover:bg-stone-800 active:bg-stone-900 focus:outline-stone-900 focus:outline active:ring-2 ring-stone-200',
+    dark_disabled: 'bg-stone-500 focus:outline-stone-500 focus:outline',
     dark_text: 'text-stone-100',
+
+    dark_corresponding: 'bg-stone-350 focus:outline-stone-900 focus:outline',
+    dark_corresponding_disabled:
+        'bg-stone-350 focus:outline-stone-500 focus:outline',
+    dark_corresponding_text: 'text-stone-800',
+
     background: 'bg-slate-200',
 }
 
 type AccordionProps = {
     children: StringNumberJSX
     header: string
+    dark?: boolean
     disabled?: boolean
     startExpanded?: boolean
 }
 
+type ThemeProps = {
+    primary: string
+    primary_disabled: string
+    primary_text: string
+    secondary: string
+    secondary_disabled: string
+    secondary_text: string
+}
+
 const Accordion: FC<AccordionProps> = ({
     children,
+    dark = false,
     header,
     disabled = false,
     startExpanded = false,
@@ -44,6 +63,24 @@ const Accordion: FC<AccordionProps> = ({
     const headerRef = useRef<HTMLButtonElement>(null)
     // stores the header element of the currently selected accordion
     const panelRef = useRef<HTMLDivElement>(null)
+
+    const theme: ThemeProps = dark
+        ? {
+              primary: COLOR_VARIANTS.dark,
+              primary_disabled: COLOR_VARIANTS.dark_disabled,
+              primary_text: COLOR_VARIANTS.dark_text,
+              secondary: COLOR_VARIANTS.dark_corresponding,
+              secondary_disabled: COLOR_VARIANTS.dark_corresponding_disabled,
+              secondary_text: COLOR_VARIANTS.dark_corresponding_text,
+          }
+        : {
+              primary: COLOR_VARIANTS.primary,
+              primary_disabled: COLOR_VARIANTS.primary_disabled,
+              primary_text: COLOR_VARIANTS.primary_text,
+              secondary: COLOR_VARIANTS.secondary,
+              secondary_disabled: COLOR_VARIANTS.secondary_disabled,
+              secondary_text: COLOR_VARIANTS.secondary_text,
+          }
 
     const setId = () => {
         setHeaderId(uniqueID())
@@ -101,6 +138,7 @@ const Accordion: FC<AccordionProps> = ({
                 headerId={headerId}
                 headerRef={headerRef}
                 panelId={panelId}
+                theme={theme}
             />
             <AccordionPanel
                 children={children}
@@ -110,6 +148,7 @@ const Accordion: FC<AccordionProps> = ({
                 headerId={headerId}
                 panelId={panelId}
                 panelRef={panelRef}
+                theme={theme}
             />
         </div>
     )
@@ -123,6 +162,7 @@ const AccordionHeader = (props: {
     headerId: string
     headerRef: React.RefObject<HTMLButtonElement>
     panelId: string
+    theme: ThemeProps
 }) => {
     const {
         disabled,
@@ -132,14 +172,16 @@ const AccordionHeader = (props: {
         headerId,
         headerRef,
         panelId,
+        theme,
     } = props
 
     const headerClassName = `${
         !disabled
-            ? `${COLOR_VARIANTS.primary} cursor-pointer`
-            : `${COLOR_VARIANTS.primary_disabled} cursor-not-allowed opacity-85`
-    } ${
-        COLOR_VARIANTS.primary_text
+            ? `${theme.primary} cursor-pointer`
+            : `${theme.primary_disabled} cursor-not-allowed opacity-85`
+    } 
+    ${
+        theme.primary_text
     } rounded-md p-2 w-full flex justify-between gap-8 items-center text-balance text-left font-semibold outline-offset-2 outline-2 text-lg`
 
     return (
@@ -171,6 +213,7 @@ const AccordionPanel = (props: {
     headerId: string
     panelId: string
     panelRef: React.RefObject<HTMLDivElement>
+    theme: ThemeProps
 }) => {
     const {
         children,
@@ -180,13 +223,14 @@ const AccordionPanel = (props: {
         headerId,
         panelId,
         panelRef,
+        theme,
     } = props
 
     const panelClassName = `p-2 ${
-        disabled ? COLOR_VARIANTS.secondary_disabled : COLOR_VARIANTS.secondary
+        disabled ? theme.secondary_disabled : theme.secondary
     } ${
-        COLOR_VARIANTS.secondary_text
-    } outline-offset-2 outline-2 rounded-md mt-1.5 text-balance cursor-text text-base`
+        theme.secondary_text
+    } outline-offset-2 outline-2 rounded-b-md mt-1.5 text-balance cursor-text text-base`
 
     return (
         expanded && (
