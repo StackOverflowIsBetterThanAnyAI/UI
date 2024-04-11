@@ -21,6 +21,11 @@ const config: Config = {
                 },
                 stone: {
                     350: '#c1bfbd',
+                    450: '#96908d',
+                },
+                cyan: {
+                    250: '#9bf3fd',
+                    450: '#1fc2db',
                 },
             },
         },

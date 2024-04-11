@@ -5,8 +5,8 @@ import React, { FC, useEffect, useRef, useState } from 'react'
 
 const COLOR_VARIANTS = {
     primary:
-        'bg-cyan-400 hover:bg-cyan-500 active:bg-cyan-600 focus:outline-blue-600 focus:outline active:ring-2 ring-blue-200',
-    primary_disabled: 'bg-cyan-300 focus:outline-stone-500 focus:outline',
+        'bg-cyan-450 hover:bg-cyan-500 active:bg-cyan-600 focus:outline-blue-600 focus:outline active:ring-2 ring-blue-200',
+    primary_disabled: 'bg-cyan-250 focus:outline-stone-500 focus:outline',
     primary_text: 'text-stone-900',
 
     secondary: 'bg-red-1000 focus:outline-red-500 focus:outline',
@@ -14,7 +14,7 @@ const COLOR_VARIANTS = {
     secondary_text: 'text-slate-50',
 
     dark: 'bg-stone-700 hover:bg-stone-800 active:bg-stone-900 focus:outline-stone-900 focus:outline active:ring-2 ring-stone-200',
-    dark_disabled: 'bg-stone-500 focus:outline-stone-500 focus:outline',
+    dark_disabled: 'bg-stone-450 focus:outline-stone-500 focus:outline',
     dark_text: 'text-stone-100',
 
     dark_corresponding: 'bg-stone-350 focus:outline-stone-900 focus:outline',
@@ -191,7 +191,7 @@ const AccordionHeader = (props: {
                 id={headerId}
                 onClick={!disabled ? handleOpenPanel : undefined}
                 ref={headerRef}
-                aria-label={header}
+                aria-label={`${header} ${disabled ? '.disabled' : ''}`}
                 aria-expanded={expanded}
                 aria-controls={panelId}
                 aria-pressed={!disabled ? expanded : undefined}
