@@ -30,6 +30,7 @@ type AccordionProps = {
     header: string
     dark?: boolean
     disabled?: boolean
+    id?: string
     startExpanded?: boolean
 }
 
@@ -46,6 +47,7 @@ const Accordion: FC<AccordionProps> = ({
     children,
     dark = false,
     header,
+    id,
     disabled = false,
     startExpanded = false,
 }) => {
@@ -137,6 +139,7 @@ const Accordion: FC<AccordionProps> = ({
                 header={header}
                 headerId={headerId}
                 headerRef={headerRef}
+                id={id}
                 panelId={panelId}
                 theme={theme}
             />
@@ -161,6 +164,7 @@ const AccordionHeader = (props: {
     header: string
     headerId: string
     headerRef: React.RefObject<HTMLButtonElement>
+    id: string | undefined
     panelId: string
     theme: ThemeProps
 }) => {
@@ -171,6 +175,7 @@ const AccordionHeader = (props: {
         header,
         headerId,
         headerRef,
+        id,
         panelId,
         theme,
     } = props
@@ -187,7 +192,7 @@ const AccordionHeader = (props: {
     const ariaLable = `${header} ${disabled ? '.disabled' : ''}`
 
     return (
-        <div role="heading" aria-level={3}>
+        <div role="heading" aria-level={3} id={id}>
             <button
                 className={headerClassName}
                 id={headerId}
