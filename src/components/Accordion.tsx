@@ -187,7 +187,7 @@ const AccordionHeader = (props: {
     } 
     ${
         theme.primary_text
-    } rounded-md p-2 w-full flex justify-between gap-8 items-center text-balance text-left font-semibold outline-offset-2 outline-2 text-lg`
+    } rounded-md p-2 w-full flex justify-between gap-8 items-center text-balance text-left font-semibold outline-offset-2 outline-2 lg:text-xl sm:text-lg text-base`
 
     const ariaLable = `${header} ${disabled ? '.disabled' : ''}`
 
@@ -237,7 +237,7 @@ const AccordionPanel = (props: {
         disabled ? theme.secondary_disabled : theme.secondary
     } ${
         theme.secondary_text
-    } outline-offset-2 outline-2 rounded-b-md mt-1.5 text-balance cursor-text text-base`
+    } outline-offset-2 outline-2 rounded-b-md mt-1.5 text-balance cursor-text lg:text-lg sm:text-base text-sm`
 
     return (
         expanded && (
