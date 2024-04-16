@@ -1,6 +1,12 @@
 import { Icon, StringNumber } from '@/types/types'
-import { FC, useEffect, useState } from 'react'
+import { CSSProperties, FC } from 'react'
 import Image from 'next/image'
+import { useResize } from '@/hooks/useResize'
+import { useScreenWidth } from '@/hooks/useScreenWidth'
+
+// TODO: if href is present, the specified element is focussed after the button has been pressed
+// TODO: custom method which makes all images look the same
+// some images could be extremely wide but are capped to the same width
 
 const COLOR_VARIANTS = {
     primary:
@@ -32,12 +38,18 @@ type ConditionalLabelProps =
           children?: never
       }
 
-type ButtonProps = {
-    onClick: () => void
-    disabled?: boolean
+type ConditionalHrefProps =
+    | {
+          href?: never
+          onClick: () => void
+      }
+    | {
+          href: string
+          onClick?: () => void
+      }
 
-    // TODO: if href is present, the specified element is focussed after the button has been pressed
-    href?: string
+type ButtonProps = {
+    disabled?: boolean
     lang?: string
     theme?: 'blue' | 'red' | 'dark'
 }
@@ -48,7 +60,9 @@ type ThemeProps = {
     text: string
 }
 
-const Button: FC<ButtonProps & ConditionalLabelProps> = ({
+const Button: FC<
+    ButtonProps & ConditionalLabelProps & ConditionalHrefProps
+> = ({
     ariaLable,
     children,
     disabled = false,
@@ -81,32 +95,44 @@ const Button: FC<ButtonProps & ConditionalLabelProps> = ({
         }
     })()
 
-    const [buttonIsSmall, setButtonIsSmall] = useState(false)
+    const buttonIsSmall = useResize(384)
+    const screenWidth = useScreenWidth()
 
-    useEffect(() => {
-        const handleResize = () => {
-            setButtonIsSmall(window.innerWidth < 384)
+    const getImageSize = (): number => {
+        switch (screenWidth) {
+            case 'MOBILE':
+                return 35
+            case 'TABLET':
+                return 40
+            case 'DESKTOP':
+                return 50
         }
-        window.addEventListener('resize', handleResize)
-        handleResize()
-        return () => {
-            window.removeEventListener('resize', handleResize)
-        }
-    }, [])
+    }
+
+    const imageSize = getImageSize()
 
     const handleOnClick = () => {
         if (!disabled) {
-            onClick()
+            onClick && onClick()
         }
     }
 
-    const handleOnKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
+    const handleOnKeyDownButton = (
+        e: React.KeyboardEvent<HTMLButtonElement>
+    ) => {
         if ((e.key === 'Enter' || e.key === ' ') && !disabled) {
-            onClick()
+            onClick && onClick()
         }
     }
 
-    // TODO: change 'disabled' according to selected language of the web page
+    const handleOnKeyDownAnchor = (
+        e: React.KeyboardEvent<HTMLAnchorElement>
+    ) => {
+        if ((e.key === 'Enter' || e.key === ' ') && !disabled) {
+            onClick && onClick()
+        }
+    }
+
     const accessibleText = (element: StringNumber, disabled: boolean) => {
         if (typeof element === 'number')
             return disabled
@@ -121,17 +147,26 @@ const Button: FC<ButtonProps & ConditionalLabelProps> = ({
             : `${themeSet.disabled} cursor-not-allowed opacity-85`
     } ${
         themeSet.text
-    } rounded-md px-4 py-2 m-1.5 w-full flex text-balance justify-center font-semibold outline-offset-2 outline-2 text-lg`
+    } rounded-md px-4 py-2 m-1.5 w-full flex text-balance justify-center font-semibold outline-offset-2 outline-2 lg:text-xl sm:text-lg text-base`
 
     const buttonAriaLable = ariaLable
         ? `${ariaLable}${disabled ? '. disabled' : ''}`
         : accessibleText(children!, disabled)
 
+    const truncateText: CSSProperties = {
+        display: '-webkit-box',
+        WebkitBoxOrient: 'vertical',
+        WebkitLineClamp: 3,
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        maxWidth: '100%',
+    }
+
     return !href ? (
         <button
             className={buttonClassName}
             onMouseDown={handleOnClick}
-            onKeyDown={handleOnKeyDown}
+            onKeyDown={handleOnKeyDownButton}
             role="button"
             lang={lang}
             aria-label={buttonAriaLable}
@@ -143,8 +178,7 @@ const Button: FC<ButtonProps & ConditionalLabelProps> = ({
                         <Image
                             src={icon.src}
                             alt={icon.alt}
-                            height={icon.size}
-                            width={icon.size}
+                            height={imageSize}
                         />
                         {!buttonIsSmall && children}
                     </>
@@ -153,17 +187,28 @@ const Button: FC<ButtonProps & ConditionalLabelProps> = ({
             </div>
         </button>
     ) : (
-        <a href={href}>
+        <a
+            href={disabled ? undefined : href}
+            className={buttonClassName}
+            onMouseDown={onClick && handleOnClick}
+            onKeyDown={handleOnKeyDownAnchor}
+            role="button"
+            lang={lang}
+            aria-label={buttonAriaLable}
+            aria-disabled={disabled}
+        >
             <div className="flex items-center gap-4">
                 {icon && (
-                    <Image
-                        src={icon.src}
-                        alt={icon.alt}
-                        height={icon.size}
-                        width={icon.size}
-                    />
+                    <>
+                        <Image
+                            src={icon.src}
+                            alt={icon.alt}
+                            height={imageSize}
+                        />
+                        {!buttonIsSmall && children}
+                    </>
                 )}
-                {children}
+                {!icon && children}
             </div>
         </a>
     )
