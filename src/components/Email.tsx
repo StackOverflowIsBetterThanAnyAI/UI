@@ -23,7 +23,7 @@ const Email: FC<EmailProps> = ({
         <Button
             href={`mailto:${emailAdress}`}
             disabled={disabled}
-            ariaLable={accessibleText}
+            arialabel={accessibleText}
             icon={{
                 src: emailIcon,
                 alt: accessibleText,

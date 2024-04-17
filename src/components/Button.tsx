@@ -3,6 +3,7 @@ import { CSSProperties, FC } from 'react'
 import Image from 'next/image'
 import { useResize } from '@/hooks/useResize'
 import { useScreenWidth } from '@/hooks/useScreenWidth'
+import { accessibleText } from '@/helper/accessibleText'
 
 // TODO: if href is present, the specified element is focussed after the button has been pressed
 // TODO: custom method which makes all images look the same
@@ -29,11 +30,11 @@ const COLOR_VARIANTS = {
 type ConditionalLabelProps =
     | {
           children: StringNumber
-          ariaLable?: string
+          arialabel?: string
           icon?: Icon
       }
     | {
-          ariaLable: string
+          arialabel: string
           icon: Icon
           children?: never
       }
@@ -63,7 +64,7 @@ type ThemeProps = {
 const Button: FC<
     ButtonProps & ConditionalLabelProps & ConditionalHrefProps
 > = ({
-    ariaLable,
+    arialabel,
     children,
     disabled = false,
     href,
@@ -134,15 +135,6 @@ const Button: FC<
         }
     }
 
-    // aria-label: '.disabled' is added if the button is disabled
-    const accessibleText = (element: StringNumber, disabled: boolean) => {
-        if (typeof element === 'number')
-            return disabled
-                ? `${element.toString()}. disabled`
-                : element.toString()
-        return disabled ? `${element}. 'disabled'` : element
-    }
-
     const buttonClassName = `${
         !disabled
             ? `${themeSet.primary} cursor-pointer`
@@ -151,8 +143,8 @@ const Button: FC<
         themeSet.text
     } rounded-md px-4 py-2 m-1.5 w-full max-w-64 min-w-24 flex text-balance justify-center font-semibold outline-offset-2 outline-2 lg:text-xl sm:text-lg text-base`
 
-    const buttonAriaLable = ariaLable
-        ? `${ariaLable}${disabled ? '. disabled' : ''}`
+    const buttonArialabel = arialabel
+        ? `${arialabel}${disabled ? '. disabled' : ''}`
         : accessibleText(children!, disabled)
 
     const truncateText: CSSProperties = {
@@ -171,7 +163,7 @@ const Button: FC<
             onKeyDown={handleOnKeyDownButton}
             role="button"
             lang={lang}
-            aria-label={buttonAriaLable}
+            aria-label={buttonArialabel}
             aria-disabled={disabled}
         >
             <div className="flex items-center gap-4">
@@ -203,7 +195,7 @@ const Button: FC<
             onKeyDown={handleOnKeyDownAnchor}
             role="button"
             lang={lang}
-            aria-label={buttonAriaLable}
+            aria-label={buttonArialabel}
             aria-disabled={disabled}
         >
             <div className="flex items-center gap-4">

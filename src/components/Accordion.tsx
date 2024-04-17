@@ -189,7 +189,7 @@ const AccordionHeader = (props: {
         theme.primary_text
     } rounded-md p-2 w-full flex justify-between gap-8 items-center text-balance text-left font-semibold outline-offset-2 outline-2 lg:text-xl sm:text-lg text-base`
 
-    const ariaLable = `${header} ${disabled ? '.disabled' : ''}`
+    const arialabel = `${header} ${disabled ? '.disabled' : ''}`
 
     return (
         <div role="heading" aria-level={3} id={id}>
@@ -198,7 +198,7 @@ const AccordionHeader = (props: {
                 id={headerId}
                 onClick={!disabled ? handleOpenPanel : undefined}
                 ref={headerRef}
-                aria-label={ariaLable}
+                aria-label={arialabel}
                 aria-expanded={expanded}
                 aria-controls={panelId}
                 aria-pressed={!disabled ? expanded : undefined}
