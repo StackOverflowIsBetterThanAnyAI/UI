@@ -1,9 +1,9 @@
 'use client'
 
 import Button from '@/components/Button'
+import Email from '@/components/Email'
 
 import starImage from './star.png'
-import { Email } from '@/components/Email'
 
 export default function Home() {
     return (

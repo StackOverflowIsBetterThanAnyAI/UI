@@ -11,7 +11,7 @@ type EmailProps = {
     theme?: 'blue' | 'red' | 'dark'
 }
 
-export const Email: FC<EmailProps> = ({
+const Email: FC<EmailProps> = ({
     children,
     disabled = false,
     emailAdress,
@@ -33,3 +33,5 @@ export const Email: FC<EmailProps> = ({
         </Button>
     )
 }
+
+export default Email
