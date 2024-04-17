@@ -157,6 +157,10 @@ const Toggle: FC<ToggleProps & ConditionalInfoProps> = ({
         themeSet.text
     } flex items-center p-1.5 m-1 w-32 rounded-2xl lg:text-xl sm:text-lg text-base`
 
+    const spanClassName = `block absolute left-0 w-8 h-8 rounded-full bg-stone-50 drop-shadow-md transition-transform duration-300 ease-in-out transform ${
+        isActivated ? 'translate-x-full' : ''
+    }`
+
     return (
         <button
             className={buttonClassName}
@@ -170,11 +174,7 @@ const Toggle: FC<ToggleProps & ConditionalInfoProps> = ({
             <span
                 className={`relative mr-2 w-16 h-8 rounded-full ${themeSet.slider}`}
             >
-                <span
-                    className={`block absolute left-0 w-8 h-8 rounded-full bg-stone-50 drop-shadow-md transition-transform duration-300 ease-in-out transform ${
-                        isActivated ? 'translate-x-full' : ''
-                    }`}
-                />
+                <span className={spanClassName} />
             </span>
             {textOn && textOff ? (
                 <span>{isActivated ? textOn : textOff}</span>
