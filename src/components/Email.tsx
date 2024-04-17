@@ -18,14 +18,15 @@ const Email: FC<EmailProps> = ({
     recipient,
     theme = 'blue',
 }) => {
+    const accessibleText = `Send an email to ${recipient}`
     return (
         <Button
             href={`mailto:${emailAdress}`}
             disabled={disabled}
-            ariaLable={`Send an email to ${recipient}`}
+            ariaLable={accessibleText}
             icon={{
                 src: emailIcon,
-                alt: `Send an email to ${recipient}`,
+                alt: accessibleText,
             }}
             theme={theme}
         >

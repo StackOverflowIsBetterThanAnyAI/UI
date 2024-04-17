@@ -95,7 +95,9 @@ const Button: FC<
         }
     })()
 
+    // checks if icon can be hidden
     const buttonIsSmall = useResize(384)
+    // checks if the current viewport is mobile, tablet or desktop
     const screenWidth = useScreenWidth()
 
     const getImageSize = (): number => {
@@ -108,7 +110,6 @@ const Button: FC<
                 return 50
         }
     }
-
     const imageSize = getImageSize()
 
     const handleOnClick = () => {
@@ -133,6 +134,7 @@ const Button: FC<
         }
     }
 
+    // aria-label: '.disabled' is added if the button is disabled
     const accessibleText = (element: StringNumber, disabled: boolean) => {
         if (typeof element === 'number')
             return disabled
