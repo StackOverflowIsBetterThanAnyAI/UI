@@ -1,6 +1,5 @@
 'use client'
 
-import Accordion from '@/components/Accordion'
 import Button from '@/components/Button'
 
 import starImage from './star.png'
@@ -9,31 +8,6 @@ import { Email } from '@/components/Email'
 export default function Home() {
     return (
         <main className="flex min-h-screen flex-col items-center justify-between p-24">
-            <div className="w-full items-top justify-between text-sm lg:flex flex-wrap">
-                <Accordion header="Header 1" id="header1">
-                    Content of the Accordion 1
-                </Accordion>
-                <Accordion
-                    header="Header 2"
-                    disabled
-                    startExpanded
-                    id="header2"
-                >
-                    Content of the Accordion 2
-                </Accordion>
-                <Accordion header="Header 3" dark id="header3">
-                    Content of the Accordion 3
-                </Accordion>
-                <Accordion
-                    header="Header 4"
-                    disabled
-                    startExpanded
-                    dark
-                    id="header4"
-                >
-                    Content of the Accordion 4
-                </Accordion>
-            </div>
             <div>
                 <Button lang="de" onClick={() => console.log('')}>
                     {187}
@@ -152,6 +126,14 @@ export default function Home() {
                     emailAdress="michael.muenzenhofer@gmail.com"
                     recipient="Michael Münzenhofer"
                     theme="dark"
+                >
+                    Michael Münzenhofer
+                </Email>
+                <Email
+                    emailAdress="michael.muenzenhofer@gmail.com"
+                    recipient="Michael Münzenhofer"
+                    theme="dark"
+                    disabled
                 >
                     Michael Münzenhofer
                 </Email>

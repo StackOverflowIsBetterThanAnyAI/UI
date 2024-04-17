@@ -147,7 +147,7 @@ const Button: FC<
             : `${themeSet.disabled} cursor-not-allowed opacity-85`
     } ${
         themeSet.text
-    } rounded-md px-4 py-2 m-1.5 w-full flex text-balance justify-center font-semibold outline-offset-2 outline-2 lg:text-xl sm:text-lg text-base`
+    } rounded-md px-4 py-2 m-1.5 w-full max-w-64 min-w-24 flex text-balance justify-center font-semibold outline-offset-2 outline-2 lg:text-xl sm:text-lg text-base`
 
     const buttonAriaLable = ariaLable
         ? `${ariaLable}${disabled ? '. disabled' : ''}`
@@ -156,7 +156,7 @@ const Button: FC<
     const truncateText: CSSProperties = {
         display: '-webkit-box',
         WebkitBoxOrient: 'vertical',
-        WebkitLineClamp: 3,
+        WebkitLineClamp: 2,
         overflow: 'hidden',
         textOverflow: 'ellipsis',
         maxWidth: '100%',
@@ -180,10 +180,17 @@ const Button: FC<
                             alt={icon.alt}
                             height={imageSize}
                         />
-                        {!buttonIsSmall && children}
+                        {!buttonIsSmall && (
+                            <div
+                                className="text-left text-wrap"
+                                style={truncateText}
+                            >
+                                {children}
+                            </div>
+                        )}
                     </>
                 )}
-                {!icon && children}
+                {!icon && <div style={truncateText}>{children}</div>}
             </div>
         </button>
     ) : (
@@ -205,10 +212,17 @@ const Button: FC<
                             alt={icon.alt}
                             height={imageSize}
                         />
-                        {!buttonIsSmall && children}
+                        {!buttonIsSmall && (
+                            <div
+                                className="text-left text-wrap"
+                                style={truncateText}
+                            >
+                                {children}
+                            </div>
+                        )}
                     </>
                 )}
-                {!icon && children}
+                {!icon && <div style={truncateText}>{children}</div>}
             </div>
         </a>
     )
