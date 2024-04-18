@@ -28,8 +28,8 @@ const COLOR_VARIANTS = {
 
 type ConditionalInfoProps =
     | {
-          imageOn: Omit<Icon, 'alt'>
-          imageOff: Omit<Icon, 'alt'>
+          imageOn: Omit<Icon, 'alt' | 'href'>
+          imageOff: Omit<Icon, 'alt' | 'href'>
           textOn?: never
           textOff?: never
       }

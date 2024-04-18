@@ -5,4 +5,5 @@ export type StringNumber = string | number
 export type Icon = {
     src: StaticImageData
     alt: string
+    href: string
 }

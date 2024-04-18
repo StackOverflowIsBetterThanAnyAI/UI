@@ -8,6 +8,7 @@ import { accessibleText } from '@/helper/accessibleText'
 // TODO: if href is present, the specified element is focussed after the button has been pressed
 // TODO: custom method which makes all images look the same
 // some images could be extremely wide but are capped to the same width
+// TODO: implement react router
 
 const COLOR_VARIANTS = {
     primary:
@@ -31,11 +32,11 @@ type ConditionalLabelProps =
     | {
           children: StringNumber
           arialabel?: string
-          icon?: Icon
+          icon?: Omit<Icon, 'href'>
       }
     | {
           arialabel: string
-          icon: Icon
+          icon: Omit<Icon, 'href'>
           children?: never
       }
 

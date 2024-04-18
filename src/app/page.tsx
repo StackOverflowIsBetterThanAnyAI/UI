@@ -1,45 +1,47 @@
 'use client'
 
 import Toggle from '@/components/Toggle'
-import starImage from './star.png'
-import emailImage from './email.png'
+import Footer from '@/components/Footer'
+
+import emailIcon from './email.png'
 
 export default function Home() {
     return (
-        <main className="flex min-h-screen flex-col items-center justify-between p-24">
-            <Toggle textOff="OFF" textOn="ON" arialabel="light switch" />
-            <Toggle
-                textOff="OFF"
-                textOn="ON"
-                arialabel="light switch"
-                disabled
+        <>
+            <main className="flex flex-col items-center p-24 bg-red-300 max-w-screen-lg w-full">
+                <Toggle textOff="OFF" textOn="ON" arialabel="light switch" />
+                <Toggle textOff="OFF" textOn="ON" arialabel="light switch" />
+                <Toggle textOff="OFF" textOn="ON" arialabel="light switch" />
+            </main>
+            <Footer
+                logo={{
+                    src: emailIcon,
+                    alt: 'email',
+                    href: '#',
+                }}
+                content={[
+                    {
+                        header: 'Sportarten',
+                        items: [
+                            'Fußball',
+                            'Motorsport',
+                            'Darts',
+                            'US-Sport',
+                            'Olympia',
+                        ],
+                    },
+                    {
+                        header: 'Social Media',
+                        items: [
+                            'Facebook',
+                            'Instagram',
+                            'X',
+                            'TikTok',
+                            'YouTube',
+                        ],
+                    },
+                ]}
             />
-            <Toggle
-                textOff="aus"
-                textOn="an"
-                arialabel="light switch"
-                theme="dark"
-            />
-            <Toggle
-                textOff="aus"
-                textOn="an"
-                arialabel="light switch"
-                theme="dark"
-                disabled
-            />
-            <Toggle
-                imageOff={{ src: starImage }}
-                imageOn={{ src: emailImage }}
-                theme="red"
-                arialabel="light switch"
-            />
-            <Toggle
-                imageOff={{ src: starImage }}
-                imageOn={{ src: emailImage }}
-                theme="red"
-                arialabel="light switch"
-                disabled
-            />
-        </main>
+        </>
     )
 }
