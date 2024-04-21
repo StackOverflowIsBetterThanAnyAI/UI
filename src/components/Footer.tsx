@@ -1,6 +1,6 @@
 import { Icon } from '@/types/types'
 import { FC } from 'react'
-import Button from './Button'
+import Link from './Link'
 
 type FooterColumnProps = {
     header: string
@@ -10,22 +10,31 @@ type FooterColumnProps = {
 type FooterProps = {
     content: FooterColumnProps[]
     logo?: Icon
+    theme: 'blue' | 'red' | 'dark'
 }
 
-const Footer: FC<FooterProps> = ({ content, logo }) => {
+const Footer: FC<FooterProps> = ({ content, logo, theme = 'blue' }) => {
     return (
-        <footer className="flex flex-col max-w-screen-lg">
+        <footer className="flex flex-col max-w-screen-lg m-2">
             {logo ? (
-                <Button
-                    icon={logo}
-                    arialabel={logo.alt}
-                    href={logo.href}
-                ></Button>
+                <div className="m-1">
+                    <Link
+                        icon={logo}
+                        arialabel={logo.alt}
+                        href={logo.href}
+                        theme={theme}
+                    ></Link>
+                </div>
             ) : undefined}
             <div className="flex flex-row">
-                {content.map((item) => {
+                {content.map((item, index) => {
                     return (
-                        <FooterColumn header={item.header} items={item.items} />
+                        <FooterColumn
+                            header={item.header}
+                            items={item.items}
+                            key={index}
+                            theme={theme}
+                        />
                     )
                 })}
             </div>
@@ -36,18 +45,24 @@ const Footer: FC<FooterProps> = ({ content, logo }) => {
     )
 }
 
-const FooterColumn: FC<FooterColumnProps> = ({ header, items }) => {
+const FooterColumn: FC<
+    FooterColumnProps & { theme: 'blue' | 'red' | 'dark' }
+> = ({ header, items, theme }) => {
     const sortedItems = items.map((item) => {
         return (
-            <li key={item}>
-                <div>{item}</div>
+            <li key={item} className="m-1">
+                <Link href={item} theme={theme}>
+                    {item}
+                </Link>
             </li>
         )
     })
 
     return (
-        <div>
-            <div>{header}</div>
+        <div className="flex flex-col w-full text-center">
+            <div className="text-center lg:text-xl sm:text-lg text-base">
+                {header}
+            </div>
             <ul>{sortedItems}</ul>
         </div>
     )

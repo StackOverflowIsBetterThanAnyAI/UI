@@ -19,6 +19,7 @@ export default function Home() {
                     alt: 'email',
                     href: '#',
                 }}
+                theme="red"
                 content={[
                     {
                         header: 'Sportarten',
@@ -38,6 +39,45 @@ export default function Home() {
                             'X',
                             'TikTok',
                             'YouTube',
+                        ],
+                    },
+                    {
+                        header: 'Video',
+                        items: [
+                            'Mediathek',
+                            'Livestream',
+                            'Podcasts',
+                            'Doppelpass',
+                        ],
+                    },
+                    {
+                        header: 'Service',
+                        items: [
+                            'News-App',
+                            'Liveticker',
+                            'eSPORTS1',
+                            'Sport1+',
+                            'Sport1 Darts',
+                        ],
+                    },
+                    {
+                        header: 'Mehr',
+                        items: [
+                            'TV-Programm',
+                            'Sportquiz',
+                            'Tippspiel',
+                            'Sportwetten',
+                            'Sport1 Akademie',
+                        ],
+                    },
+                    {
+                        header: 'Über uns',
+                        items: [
+                            'Unternehmen',
+                            'Karriere',
+                            'Kontakt',
+                            'Presse',
+                            'Sport1 Business',
                         ],
                     },
                 ]}

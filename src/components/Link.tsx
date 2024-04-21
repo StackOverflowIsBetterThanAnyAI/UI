@@ -12,27 +12,29 @@ import { accessibleText } from '@/helper/accessibleText'
 
 const COLOR_VARIANTS = {
     primary:
-        'bg-cyan-450 hover:bg-cyan-500 active:bg-cyan-600 focus:outline-blue-600 focus:outline active:ring-2 ring-blue-200',
+        'decoration-cyan-450 hover:decoration-cyan-500 active:decoration-cyan-600 focus:outline-blue-600 focus:outline active:ring-2 ring-blue-200',
 
-    primary_disabled: 'bg-cyan-250 focus:outline-stone-500 focus:outline',
+    primary_disabled:
+        'decoration-cyan-250 focus:outline-stone-500 focus:outline',
     primary_text: 'text-stone-900',
 
     secondary:
-        'bg-red-1000 hover:bg-red-1100 active:bg-red-1200 focus:outline-red-1200 focus:outline active:ring-2 ring-red-100',
+        'decoration-red-1000 hover:decoration-red-1100 active:decoration-red-1200 focus:outline-red-1200 focus:outline active:ring-2 ring-red-100',
 
-    secondary_disabled: 'bg-red-400 focus:outline-stone-500 focus:outline',
+    secondary_disabled:
+        'decoration-red-400 focus:outline-stone-500 focus:outline',
     secondary_text: 'text-slate-50',
 
-    dark: 'bg-stone-700 hover:bg-stone-800 active:bg-stone-900 focus:outline-stone-900 focus:outline active:ring-2 ring-stone-200',
-    dark_disabled: 'bg-stone-450 focus:outline-stone-500 focus:outline',
+    dark: 'decoration-stone-700 hover:decoration-stone-800 active:decoration-stone-900 focus:outline-stone-900 focus:outline active:ring-2 ring-stone-200',
+    dark_disabled: 'decoration-stone-450 focus:outline-stone-500 focus:outline',
     dark_text: 'text-stone-100',
 }
 
 type ConditionalLabelProps =
     | {
           children: StringNumber
-          arialabel?: string
-          icon?: Omit<Icon, 'href'>
+          arialabel?: never
+          icon?: never
       }
     | {
           arialabel: string
@@ -40,19 +42,11 @@ type ConditionalLabelProps =
           children?: never
       }
 
-type ConditionalHrefProps =
-    | {
-          href?: never
-          onClick: () => void
-      }
-    | {
-          href: string
-          onClick?: () => void
-      }
-
 type ButtonProps = {
+    href: string
     disabled?: boolean
     lang?: string
+    onClick?: () => void
     theme?: 'blue' | 'red' | 'dark'
 }
 
@@ -62,9 +56,7 @@ type ThemeProps = {
     text: string
 }
 
-const Button: FC<
-    ButtonProps & ConditionalLabelProps & ConditionalHrefProps
-> = ({
+const Link: FC<ButtonProps & ConditionalLabelProps> = ({
     arialabel,
     children,
     disabled = false,
@@ -120,14 +112,6 @@ const Button: FC<
         }
     }
 
-    const handleOnKeyDownButton = (
-        e: React.KeyboardEvent<HTMLButtonElement>
-    ) => {
-        if ((e.key === 'Enter' || e.key === ' ') && !disabled) {
-            onClick && onClick()
-        }
-    }
-
     const handleOnKeyDownAnchor = (
         e: React.KeyboardEvent<HTMLAnchorElement>
     ) => {
@@ -142,7 +126,7 @@ const Button: FC<
             : `${themeSet.disabled} cursor-not-allowed opacity-85`
     } ${
         themeSet.text
-    } rounded-md px-4 py-2 w-full max-w-64 min-w-24 flex text-balance justify-center font-semibold outline-offset-2 outline-2 lg:text-xl sm:text-lg text-base`
+    } rounded-md px-4 py-2 w-full max-w-64 min-w-24 flex text-balance justify-center font-semibold outline-offset-2 outline-2 lg:text-xl sm:text-lg text-base underline decoration-2`
 
     const buttonArialabel = arialabel
         ? `${arialabel}${disabled ? '. disabled' : ''}`
@@ -157,38 +141,7 @@ const Button: FC<
         maxWidth: '100%',
     }
 
-    return !href ? (
-        <button
-            className={buttonClassName}
-            onMouseDown={handleOnClick}
-            onKeyDown={handleOnKeyDownButton}
-            role="button"
-            lang={lang}
-            aria-label={buttonArialabel}
-            aria-disabled={disabled}
-        >
-            <div className="flex items-center gap-4">
-                {icon && (
-                    <>
-                        <Image
-                            src={icon.src}
-                            alt={icon.alt}
-                            height={imageSize}
-                        />
-                        {!buttonIsSmall && (
-                            <div
-                                className="text-left text-wrap"
-                                style={truncateText}
-                            >
-                                {children}
-                            </div>
-                        )}
-                    </>
-                )}
-                {!icon && <div style={truncateText}>{children}</div>}
-            </div>
-        </button>
-    ) : (
+    return (
         <a
             href={disabled ? undefined : href}
             className={buttonClassName}
@@ -223,4 +176,4 @@ const Button: FC<
     )
 }
 
-export default Button
+export default Link
