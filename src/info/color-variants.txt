@@ -1,0 +1,15 @@
+PRIMARY:
+    normal:     cyan-450    hover:cyan-500      active:cyan-600     focus:outline-blue-600      ring-blue-600
+    disabled:   cyan-250                                            focus:outline-stone-500
+    text:       stone-900
+
+SECONDARY:
+    normal:     red-1000    hover:red-1100      active:red-1200     focus:outline-red-1200      ring-red-100
+    disabled:   red-400                                             focus:outline-stone-500
+    text:       stone-50
+    
+DARK:
+    normal:     stone-700   hover:stone-800     active:stone-900    focus:outline-stone-900     ring-stone-200
+    disabled:   stone-450                                           focus:outline-stone-500
+    text:       stone-100
+    

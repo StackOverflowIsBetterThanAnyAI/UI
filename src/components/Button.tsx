@@ -19,9 +19,8 @@ const COLOR_VARIANTS = {
 
     secondary:
         'bg-red-1000 hover:bg-red-1100 active:bg-red-1200 focus:outline-red-1200 focus:outline active:ring-2 ring-red-100',
-
     secondary_disabled: 'bg-red-400 focus:outline-stone-500 focus:outline',
-    secondary_text: 'text-slate-50',
+    secondary_text: 'text-stone-50',
 
     dark: 'bg-stone-700 hover:bg-stone-800 active:bg-stone-900 focus:outline-stone-900 focus:outline active:ring-2 ring-stone-200',
     dark_disabled: 'bg-stone-450 focus:outline-stone-500 focus:outline',

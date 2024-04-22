@@ -15,9 +15,8 @@ const COLOR_VARIANTS = {
 
     secondary:
         'bg-red-1000 active:bg-red-1200 focus:outline-red-1200 focus:outline active:ring-2 ring-red-100',
-
     secondary_disabled: 'bg-red-400 focus:outline-stone-500 focus:outline',
-    secondary_text: 'text-slate-50',
+    secondary_text: 'text-stone-50',
     secondary_slider: 'bg-stone-400',
 
     dark: 'bg-stone-700 active:bg-stone-900 focus:outline-stone-900 focus:outline active:ring-2 ring-stone-200',

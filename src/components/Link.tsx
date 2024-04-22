@@ -23,7 +23,7 @@ const COLOR_VARIANTS = {
 
     secondary_disabled:
         'decoration-red-400 focus:outline-stone-500 focus:outline',
-    secondary_text: 'text-slate-50',
+    secondary_text: 'text-stone-50',
 
     dark: 'decoration-stone-700 hover:decoration-stone-800 active:decoration-stone-900 focus:outline-stone-900 focus:outline active:ring-2 ring-stone-200',
     dark_disabled: 'decoration-stone-450 focus:outline-stone-500 focus:outline',
