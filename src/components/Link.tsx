@@ -126,7 +126,7 @@ const Link: FC<ButtonProps & ConditionalLabelProps> = ({
             : `${themeSet.disabled} cursor-not-allowed opacity-85`
     } ${
         themeSet.text
-    } rounded-md px-4 py-2 w-full max-w-64 min-w-24 flex text-balance justify-center font-semibold outline-offset-2 outline-2 lg:text-xl sm:text-lg text-base underline decoration-2`
+    } rounded-md px-4 py-2 w-full max-w-64 min-w-24 flex text-balance justify-center font-semibold outline-offset-2 outline-2 lg:text-lg sm:text-base text-sm underline decoration-2`
 
     const buttonArialabel = arialabel
         ? `${arialabel}${disabled ? '. disabled' : ''}`

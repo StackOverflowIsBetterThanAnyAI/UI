@@ -1,0 +1,12 @@
+MOBILE:
+    < 384px
+
+TABLET SMALL:
+    < 640px
+
+TABLET:
+    < 1024px
+
+DESKTOP:
+    >= 1024px
+    

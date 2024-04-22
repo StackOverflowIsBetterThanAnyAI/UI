@@ -1,0 +1,19 @@
+MOBILE:
+    small: text-xs
+    normal: text-sm
+    big: text-base
+
+TABLET SMALL:
+    small: text-sm
+    normal: text-base
+    big: text-lg
+
+TABLET:
+    small: text-sm
+    normal: text-base
+    big: text-lg
+
+DESKTOP:
+    small: text-base
+    normal: text-lg
+    big: text-xl
