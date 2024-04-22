@@ -9,11 +9,28 @@ type FooterColumnProps = {
 
 type FooterProps = {
     content: FooterColumnProps[]
+    copyrightHolder: string
     logo?: Icon
-    theme: 'blue' | 'red' | 'dark'
+    sponsors?: Icon[]
+    theme?: 'blue' | 'red' | 'dark'
 }
 
-const Footer: FC<FooterProps> = ({ content, logo, theme = 'blue' }) => {
+type FooterLinksProps = {
+    title: string
+    href: string
+}
+
+type SponsorProps = {
+    logo: Icon
+}
+
+const Footer: FC<FooterProps> = ({
+    content,
+    copyrightHolder,
+    logo,
+    sponsors,
+    theme = 'blue',
+}) => {
     return (
         <footer className="flex flex-col max-w-screen-lg m-2">
             {logo ? (
@@ -27,20 +44,36 @@ const Footer: FC<FooterProps> = ({ content, logo, theme = 'blue' }) => {
                 </div>
             ) : undefined}
             <div className="flex flex-row">
-                {content.map((item, index) => {
+                {content.map((item) => {
                     return (
                         <FooterColumn
                             header={item.header}
                             items={item.items}
-                            key={index}
+                            key={item.header}
                             theme={theme}
                         />
                     )
                 })}
             </div>
-            <div>Sponsoren</div>
+            {sponsors ? (
+                <div>
+                    <ul className="flex justify-between flex-wrap">
+                        {sponsors.map((sponsor) => {
+                            return (
+                                <li key={sponsor.href}>
+                                    <Sponsors
+                                        logo={sponsor}
+                                        theme={theme}
+                                        key={sponsor.href}
+                                    />
+                                </li>
+                            )
+                        })}
+                    </ul>
+                </div>
+            ) : undefined}
             <div>Impressum Datenschutzhinweise Nutzungsbedingungen</div>
-            <div>Copyright</div>
+            <Copyright copyrightHolder={copyrightHolder} />
         </footer>
     )
 }
@@ -60,11 +93,34 @@ const FooterColumn: FC<
 
     return (
         <div className="flex flex-col w-full text-center">
-            <div className="text-center lg:text-xl sm:text-lg text-base">
+            <div className="font-semibold text-center lg:text-xl sm:text-lg text-base">
                 {header}
             </div>
             <ul>{sortedItems}</ul>
         </div>
+    )
+}
+
+const Sponsors: FC<SponsorProps & { theme: 'blue' | 'red' | 'dark' }> = ({
+    logo,
+    theme,
+}) => {
+    return (
+        <Link
+            href={logo.href}
+            icon={{ src: logo.src, alt: logo.alt }}
+            arialabel={logo.alt}
+            theme={theme}
+        />
+    )
+}
+
+const Copyright = ({ copyrightHolder }: { copyrightHolder: string }) => {
+    const year = new Date().getFullYear()
+    return (
+        <div className="font-light lg:text-base sm:text-sm text-xs">{`Copyright ${String.fromCharCode(
+            169
+        )} ${year} ${copyrightHolder}. All Rights Reserved.`}</div>
     )
 }
 

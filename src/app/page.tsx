@@ -4,6 +4,7 @@ import Toggle from '@/components/Toggle'
 import Footer from '@/components/Footer'
 
 import emailIcon from './email.png'
+import Link from '@/components/Link'
 
 export default function Home() {
     return (
@@ -12,6 +13,12 @@ export default function Home() {
                 <Toggle textOff="OFF" textOn="ON" arialabel="light switch" />
                 <Toggle textOff="OFF" textOn="ON" arialabel="light switch" />
                 <Toggle textOff="OFF" textOn="ON" arialabel="light switch" />
+                <Link
+                    href="#"
+                    icon={{ src: emailIcon, alt: 'email' }}
+                    arialabel="email"
+                    theme="red"
+                ></Link>
             </main>
             <Footer
                 logo={{
@@ -20,6 +27,7 @@ export default function Home() {
                     href: '#',
                 }}
                 theme="red"
+                copyrightHolder="Sport1 GmbH"
                 content={[
                     {
                         header: 'Sportarten',
@@ -79,6 +87,38 @@ export default function Home() {
                             'Presse',
                             'Sport1 Business',
                         ],
+                    },
+                ]}
+                sponsors={[
+                    {
+                        src: emailIcon,
+                        alt: 'sponsor 1',
+                        href: 'sponsor1',
+                    },
+                    {
+                        src: emailIcon,
+                        alt: 'sponsor 2',
+                        href: 'sponsor2',
+                    },
+                    {
+                        src: emailIcon,
+                        alt: 'sponsor 3',
+                        href: 'sponsor3',
+                    },
+                    {
+                        src: emailIcon,
+                        alt: 'sponsor 4',
+                        href: 'sponsor4',
+                    },
+                    {
+                        src: emailIcon,
+                        alt: 'sponsor 5',
+                        href: 'sponsor5',
+                    },
+                    {
+                        src: emailIcon,
+                        alt: 'sponsor 6',
+                        href: 'sponsor6',
                     },
                 ]}
             />
