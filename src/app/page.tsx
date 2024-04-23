@@ -4,6 +4,14 @@ import Toggle from '@/components/Toggle'
 import Footer from '@/components/Footer'
 
 import emailIcon from './email.png'
+import starrzIcon from './starzz.png'
+import car4sportsIcon from './car4sports.png'
+import dsaIcon from './dsa.png'
+import footbaoIcon from './footbao.png'
+import clanqIcon from './clanq.png'
+import racematesIcon from './racemates.png'
+import sport1Icon from './sport1.png'
+
 import Link from '@/components/Link'
 
 export default function Home() {
@@ -22,8 +30,8 @@ export default function Home() {
             </main>
             <Footer
                 logo={{
-                    src: emailIcon,
-                    alt: 'email',
+                    src: sport1Icon,
+                    alt: 'Zur Startseite',
                     href: '#',
                 }}
                 theme="red"
@@ -91,35 +99,42 @@ export default function Home() {
                 ]}
                 sponsors={[
                     {
-                        src: emailIcon,
-                        alt: 'sponsor 1',
-                        href: 'sponsor1',
+                        src: starrzIcon,
+                        alt: 'starrz',
+                        href: 'https://starzz.eu/',
                     },
                     {
-                        src: emailIcon,
-                        alt: 'sponsor 2',
-                        href: 'sponsor2',
+                        src: car4sportsIcon,
+                        alt: 'Car4Sports',
+                        href: 'https://car4sports.de/',
                     },
                     {
-                        src: emailIcon,
-                        alt: 'sponsor 3',
-                        href: 'sponsor3',
+                        src: dsaIcon,
+                        alt: 'Deutsche Streaming Allianz',
+                        href: 'https://deutsche-streaming-allianz.com/',
                     },
                     {
-                        src: emailIcon,
-                        alt: 'sponsor 4',
-                        href: 'sponsor4',
+                        src: footbaoIcon,
+                        alt: 'footbao',
+                        href: 'https://play.google.com/store/apps/details?id=world.footbao.footbao&gl=DE',
                     },
                     {
-                        src: emailIcon,
-                        alt: 'sponsor 5',
-                        href: 'sponsor5',
+                        src: clanqIcon,
+                        alt: 'Clanq',
+                        href: 'https://www.clanq.de/',
                     },
                     {
-                        src: emailIcon,
-                        alt: 'sponsor 6',
-                        href: 'sponsor6',
+                        src: racematesIcon,
+                        alt: 'Racemates',
+                        href: 'https://racemates-nft.com/',
                     },
+                ]}
+                footerLinks={[
+                    { href: '#', title: 'Impressum' },
+                    { href: '#', title: 'Datenschutzhinweise' },
+                    { href: '#', title: 'Datenschutzeinstellungen' },
+                    { href: '#', title: 'Nutzungsbedingungen' },
+                    { href: '#', title: 'Nutzung mit Werbung beenden' },
                 ]}
             />
         </>

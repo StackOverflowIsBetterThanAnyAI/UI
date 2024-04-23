@@ -104,11 +104,11 @@ const Button: FC<
     const getImageSize = (): number => {
         switch (screenWidth) {
             case 'MOBILE':
-                return 35
+                return 25
             case 'TABLET':
-                return 40
+                return 35
             case 'DESKTOP':
-                return 50
+                return 40
         }
     }
     const imageSize = getImageSize()

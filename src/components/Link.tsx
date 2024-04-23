@@ -28,6 +28,9 @@ const COLOR_VARIANTS = {
     dark: 'decoration-stone-700 hover:decoration-stone-800 active:decoration-stone-900 focus:outline-stone-900 focus:outline active:ring-2 ring-stone-200',
     dark_disabled: 'decoration-stone-450 focus:outline-stone-500 focus:outline',
     dark_text: 'text-stone-100',
+
+    light_background: 'bg-stone-50',
+    dark_background: 'bg-stone-950',
 }
 
 type ConditionalLabelProps =
@@ -48,6 +51,7 @@ type ButtonProps = {
     lang?: string
     onClick?: () => void
     theme?: 'blue' | 'red' | 'dark'
+    background?: 'light' | 'dark' | 'none'
 }
 
 type ThemeProps = {
@@ -58,6 +62,7 @@ type ThemeProps = {
 
 const Link: FC<ButtonProps & ConditionalLabelProps> = ({
     arialabel,
+    background = 'none',
     children,
     disabled = false,
     href,
@@ -89,6 +94,17 @@ const Link: FC<ButtonProps & ConditionalLabelProps> = ({
         }
     })()
 
+    const backgroundColor = (() => {
+        switch (background) {
+            case 'dark':
+                return COLOR_VARIANTS.dark_background
+            case 'light':
+                return COLOR_VARIANTS.light_background
+            case 'none':
+                return ''
+        }
+    })()
+
     // checks if icon can be hidden
     const buttonIsSmall = useResize(384)
     // checks if the current viewport is mobile, tablet or desktop
@@ -97,11 +113,11 @@ const Link: FC<ButtonProps & ConditionalLabelProps> = ({
     const getImageSize = (): number => {
         switch (screenWidth) {
             case 'MOBILE':
-                return 35
+                return 25
             case 'TABLET':
-                return 40
+                return 35
             case 'DESKTOP':
-                return 50
+                return 40
         }
     }
     const imageSize = getImageSize()
@@ -124,9 +140,10 @@ const Link: FC<ButtonProps & ConditionalLabelProps> = ({
         !disabled
             ? `${themeSet.primary} cursor-pointer`
             : `${themeSet.disabled} cursor-not-allowed opacity-85`
-    } ${
-        themeSet.text
-    } rounded-md px-4 py-2 w-full max-w-64 min-w-24 flex text-balance justify-center outline-offset-2 outline-2 lg:text-lg sm:text-base text-sm underline decoration-2`
+    } ${themeSet.text} ${backgroundColor}
+    rounded-md w-full ${
+        icon && 'min-w-24'
+    } flex text-balance justify-center outline-offset-2 outline-2 lg:text-lg sm:text-base text-sm underline decoration-2`
 
     const buttonArialabel = arialabel
         ? `${arialabel}${disabled ? '. disabled' : ''}`
@@ -151,6 +168,7 @@ const Link: FC<ButtonProps & ConditionalLabelProps> = ({
             lang={lang}
             aria-label={buttonArialabel}
             aria-disabled={disabled}
+            target={href.startsWith('https://') ? '_blank' : undefined}
         >
             <div className="flex items-center">
                 {icon && (
