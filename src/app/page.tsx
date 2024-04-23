@@ -102,31 +102,37 @@ export default function Home() {
                         src: starrzIcon,
                         alt: 'starrz',
                         href: 'https://starzz.eu/',
+                        background: 'light',
                     },
                     {
                         src: car4sportsIcon,
                         alt: 'Car4Sports',
                         href: 'https://car4sports.de/',
+                        background: 'light',
                     },
                     {
                         src: dsaIcon,
                         alt: 'Deutsche Streaming Allianz',
                         href: 'https://deutsche-streaming-allianz.com/',
+                        background: 'none',
                     },
                     {
                         src: footbaoIcon,
                         alt: 'footbao',
                         href: 'https://play.google.com/store/apps/details?id=world.footbao.footbao&gl=DE',
+                        background: 'light',
                     },
                     {
                         src: clanqIcon,
                         alt: 'Clanq',
                         href: 'https://www.clanq.de/',
+                        background: 'light',
                     },
                     {
                         src: racematesIcon,
                         alt: 'Racemates',
                         href: 'https://racemates-nft.com/',
+                        background: 'none',
                     },
                 ]}
                 footerLinks={[

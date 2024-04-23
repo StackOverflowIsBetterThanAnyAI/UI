@@ -8,7 +8,7 @@ type FooterProps = {
     copyrightHolder: string
     footerLinks: FooterLinksProps[]
     logo?: Icon
-    sponsors?: Icon[]
+    sponsors?: (Icon & { background: 'light' | 'dark' | 'none' })[]
     theme?: 'blue' | 'red' | 'dark'
 }
 
@@ -74,6 +74,7 @@ const Footer: FC<FooterProps> = ({
                                         logo={sponsor}
                                         theme={theme}
                                         key={sponsor.href}
+                                        background={sponsor.background}
                                     />
                                 </li>
                             )
@@ -140,10 +141,11 @@ const FooterColumn: FC<
     )
 }
 
-const Sponsors: FC<SponsorProps & { theme: 'blue' | 'red' | 'dark' }> = ({
-    logo,
-    theme,
-}) => {
+const Sponsors: FC<
+    SponsorProps & { theme: 'blue' | 'red' | 'dark' } & {
+        background: 'light' | 'dark' | 'none'
+    }
+> = ({ background, logo, theme }) => {
     return (
         <div className="px-4 py-2">
             <Link
@@ -151,7 +153,7 @@ const Sponsors: FC<SponsorProps & { theme: 'blue' | 'red' | 'dark' }> = ({
                 icon={{ src: logo.src, alt: logo.alt }}
                 arialabel={logo.alt}
                 theme={theme}
-                background="light"
+                background={background}
             />
         </div>
     )
