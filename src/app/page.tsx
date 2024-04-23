@@ -17,7 +17,7 @@ import Link from '@/components/Link'
 export default function Home() {
     return (
         <>
-            <main className="flex flex-col items-center p-24 bg-red-300 max-w-screen-lg w-full">
+            <main className="flex flex-col items-center p-24 bg-red-300 max-w-screen-lg w-full m-auto">
                 <Toggle textOff="OFF" textOn="ON" arialabel="light switch" />
                 <Toggle textOff="OFF" textOn="ON" arialabel="light switch" />
                 <Toggle textOff="OFF" textOn="ON" arialabel="light switch" />

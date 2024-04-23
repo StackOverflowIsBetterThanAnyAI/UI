@@ -39,7 +39,7 @@ const Footer: FC<FooterProps> = ({
     const screenWidth = useScreenWidth()
 
     return (
-        <footer className="flex flex-col max-w-screen-lg">
+        <footer className="flex flex-col max-w-screen-lg m-auto">
             {logo ? (
                 <div className={`mx-8 my-4 max-w-64 ${PADDING}`}>
                     <Link
