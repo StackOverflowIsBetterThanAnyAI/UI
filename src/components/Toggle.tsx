@@ -63,7 +63,7 @@ const Toggle: FC<ToggleProps & ConditionalInfoProps> = ({
     startTrue = false,
     textOff,
     textOn,
-    theme = 'blue',
+    theme = 'dark',
 }) => {
     const themeSet: ThemeProps = (() => {
         switch (theme) {

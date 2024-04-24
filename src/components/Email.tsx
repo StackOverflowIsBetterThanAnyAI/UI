@@ -16,7 +16,7 @@ const Email: FC<EmailProps> = ({
     disabled = false,
     emailAdress,
     recipient,
-    theme = 'blue',
+    theme = 'dark',
 }) => {
     const accessibleText = `Send an email to ${recipient}`
     return (

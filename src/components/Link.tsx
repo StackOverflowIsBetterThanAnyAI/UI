@@ -5,29 +5,28 @@ import { useResize } from '@/hooks/useResize'
 import { useScreenWidth } from '@/hooks/useScreenWidth'
 import { accessibleText } from '@/helper/accessibleText'
 
-// TODO: if href is present, the specified element is focussed after the button has been pressed
-// TODO: custom method which makes all images look the same
-// some images could be extremely wide but are capped to the same width
 // TODO: implement react router
 
 const COLOR_VARIANTS = {
-    primary:
-        'decoration-cyan-450 hover:decoration-cyan-500 active:decoration-cyan-600 focus:outline-blue-600 focus:outline active:ring-2 ring-blue-200',
+    blue: 'decoration-cyan-450 hover:decoration-cyan-500 active:decoration-cyan-600 focus:outline-blue-600 focus:outline active:ring-2 ring-blue-200',
+    blue_disabled: 'decoration-cyan-250',
+    blue_text: 'text-stone-900',
 
-    primary_disabled:
-        'decoration-cyan-250 focus:outline-stone-500 focus:outline',
-    primary_text: 'text-stone-900',
+    red: 'decoration-red-1000 hover:decoration-red-1100 active:decoration-red-1200 focus:outline-red-1200 focus:outline active:ring-2 ring-red-100',
+    red_disabled: 'decoration-red-400',
+    red_text: 'text-stone-50',
 
-    secondary:
-        'decoration-red-1000 hover:decoration-red-1100 active:decoration-red-1200 focus:outline-red-1200 focus:outline active:ring-2 ring-red-100',
-
-    secondary_disabled:
-        'decoration-red-400 focus:outline-stone-500 focus:outline',
-    secondary_text: 'text-stone-50',
+    yellow: 'decoration-yellow-400 hover:decoration-yellow-500 active:decoration-yellow-600 focus:outline-yellow-400 focus:outline active:ring-2 ring-yellow-600',
+    yellow_disabled: 'decoration-yellow-500',
+    yellow_text: 'text-stone-50',
 
     dark: 'decoration-stone-700 hover:decoration-stone-800 active:decoration-stone-900 focus:outline-stone-900 focus:outline active:ring-2 ring-stone-200',
-    dark_disabled: 'decoration-stone-450 focus:outline-stone-500 focus:outline',
-    dark_text: 'text-stone-100',
+    dark_disabled: 'decoration-stone-450',
+    dark_text: 'text-stone-700',
+
+    light: 'decoration-stone-100 hover:decoration-stone-300 hover:text-stone-300 active:decoration-stone-500 active:text-stone-500 focus:outline-stone-100 focus:outline active:ring-2 ring-stone-500',
+    light_disabled: 'decoration-stone-450',
+    light_text: 'text-stone-100',
 
     light_background: 'bg-stone-50',
     dark_background: 'bg-stone-950',
@@ -50,7 +49,7 @@ type ButtonProps = {
     disabled?: boolean
     lang?: string
     onClick?: () => void
-    theme?: 'blue' | 'red' | 'dark'
+    theme?: 'blue' | 'red' | 'yellow' | 'dark' | 'light'
     background?: 'light' | 'dark' | 'none'
 }
 
@@ -69,27 +68,39 @@ const Link: FC<ButtonProps & ConditionalLabelProps> = ({
     icon,
     lang,
     onClick,
-    theme = 'blue',
+    theme = 'dark',
 }) => {
     const themeSet: ThemeProps = (() => {
         switch (theme) {
             case 'blue':
                 return {
-                    primary: COLOR_VARIANTS.primary,
-                    disabled: COLOR_VARIANTS.primary_disabled,
-                    text: COLOR_VARIANTS.primary_text,
+                    primary: COLOR_VARIANTS.blue,
+                    disabled: COLOR_VARIANTS.blue_disabled,
+                    text: COLOR_VARIANTS.blue_text,
                 }
             case 'red':
                 return {
-                    primary: COLOR_VARIANTS.secondary,
-                    disabled: COLOR_VARIANTS.secondary_disabled,
-                    text: COLOR_VARIANTS.secondary_text,
+                    primary: COLOR_VARIANTS.red,
+                    disabled: COLOR_VARIANTS.red_disabled,
+                    text: COLOR_VARIANTS.red_text,
+                }
+            case 'yellow':
+                return {
+                    primary: COLOR_VARIANTS.yellow,
+                    disabled: COLOR_VARIANTS.yellow_disabled,
+                    text: COLOR_VARIANTS.yellow_text,
                 }
             case 'dark':
                 return {
                     primary: COLOR_VARIANTS.dark,
                     disabled: COLOR_VARIANTS.dark_disabled,
                     text: COLOR_VARIANTS.dark_text,
+                }
+            case 'light':
+                return {
+                    primary: COLOR_VARIANTS.light,
+                    disabled: COLOR_VARIANTS.light_disabled,
+                    text: COLOR_VARIANTS.light_text,
                 }
         }
     })()

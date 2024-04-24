@@ -25,7 +25,6 @@ export default function Home() {
                     href="#"
                     icon={{ src: emailIcon, alt: 'email' }}
                     arialabel="email"
-                    theme="red"
                 ></Link>
             </main>
             <Footer
@@ -34,7 +33,7 @@ export default function Home() {
                     alt: 'Zur Startseite',
                     href: '#',
                 }}
-                theme="red"
+                theme="yellow"
                 copyrightHolder="Sport1 GmbH"
                 content={[
                     {

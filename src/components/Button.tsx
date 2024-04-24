@@ -71,7 +71,7 @@ const Button: FC<
     icon,
     lang,
     onClick,
-    theme = 'blue',
+    theme = 'dark',
 }) => {
     const themeSet: ThemeProps = (() => {
         switch (theme) {

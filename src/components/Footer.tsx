@@ -9,7 +9,7 @@ type FooterProps = {
     footerLinks: FooterLinksProps[]
     logo?: Icon
     sponsors?: (Icon & { background: 'light' | 'dark' | 'none' })[]
-    theme?: 'blue' | 'red' | 'dark'
+    theme?: 'blue' | 'red' | 'yellow' | 'dark' | 'light'
 }
 
 type FooterColumnProps = {
@@ -34,7 +34,7 @@ const Footer: FC<FooterProps> = ({
     footerLinks,
     logo,
     sponsors,
-    theme = 'blue',
+    theme = 'dark',
 }) => {
     const screenWidth = useScreenWidth()
 
@@ -119,7 +119,7 @@ const Footer: FC<FooterProps> = ({
 }
 
 const FooterColumn: FC<
-    FooterColumnProps & { theme: 'blue' | 'red' | 'dark' }
+    FooterColumnProps & { theme: 'blue' | 'red' | 'yellow' | 'dark' | 'light' }
 > = ({ header, items, theme }) => {
     const sortedItems = items.map((item) => {
         return (
@@ -142,7 +142,7 @@ const FooterColumn: FC<
 }
 
 const Sponsors: FC<
-    SponsorProps & { theme: 'blue' | 'red' | 'dark' } & {
+    SponsorProps & { theme: 'blue' | 'red' | 'yellow' | 'dark' | 'light' } & {
         background: 'light' | 'dark' | 'none'
     }
 > = ({ background, logo, theme }) => {
