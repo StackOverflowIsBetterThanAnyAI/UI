@@ -1,9 +1,7 @@
 'use client'
 
-import Toggle from '@/components/Toggle'
 import Footer from '@/components/Footer'
 
-import emailIcon from './email.png'
 import starrzIcon from './starzz.png'
 import car4sportsIcon from './car4sports.png'
 import dsaIcon from './dsa.png'
@@ -12,21 +10,10 @@ import clanqIcon from './clanq.png'
 import racematesIcon from './racemates.png'
 import sport1Icon from './sport1.png'
 
-import Link from '@/components/Link'
-
 export default function Home() {
     return (
         <>
-            <main className="flex flex-col items-center p-24 bg-red-300 max-w-screen-lg w-full m-auto">
-                <Toggle textOff="OFF" textOn="ON" arialabel="light switch" />
-                <Toggle textOff="OFF" textOn="ON" arialabel="light switch" />
-                <Toggle textOff="OFF" textOn="ON" arialabel="light switch" />
-                <Link
-                    href="#"
-                    icon={{ src: emailIcon, alt: 'email' }}
-                    arialabel="email"
-                ></Link>
-            </main>
+            <main className="flex flex-col items-center p-24 bg-red-300 max-w-screen-lg w-full m-auto min-h-96"></main>
             <Footer
                 logo={{
                     src: sport1Icon,
@@ -135,11 +122,23 @@ export default function Home() {
                     },
                 ]}
                 footerLinks={[
-                    { href: '#', title: 'Impressum' },
-                    { href: '#', title: 'Datenschutzhinweise' },
-                    { href: '#', title: 'Datenschutzeinstellungen' },
-                    { href: '#', title: 'Nutzungsbedingungen' },
-                    { href: '#', title: 'Nutzung mit Werbung beenden' },
+                    { href: 'Impressum', title: 'Impressum' },
+                    {
+                        href: 'Datenschuthinweise',
+                        title: 'Datenschutzhinweise',
+                    },
+                    {
+                        href: 'Datenschutzeinstellungen',
+                        title: 'Datenschutzeinstellungen',
+                    },
+                    {
+                        href: 'Nutzungsbedingungen',
+                        title: 'Nutzungsbedingungen',
+                    },
+                    {
+                        href: 'Nutzung-mit-Werbung-beenden',
+                        title: 'Nutzung mit Werbung beenden',
+                    },
                 ]}
             />
         </>

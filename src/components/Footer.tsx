@@ -83,9 +83,9 @@ const Footer: FC<FooterProps> = ({
                 </div>
             ) : undefined}
             <div>
-                {screenWidth === 'DESKTOP' ? (
+                {screenWidth === 'MOBILE' ? (
                     <ul
-                        className={`flex justify-between flex-wrap gap-2 ${PADDING}`}
+                        className={`flex flex-col justify-between flex-no-wrap gap-2 items-start ${PADDING}`}
                     >
                         {footerLinks.map((link) => {
                             return (
