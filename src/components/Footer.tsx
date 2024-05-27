@@ -83,7 +83,7 @@ const Footer: FC<FooterProps> = ({
                 </div>
             ) : undefined}
             <div>
-                {screenWidth === 'MOBILE' ? (
+                {screenWidth === 'MOBILE' || screenWidth === 'TABLET SMALL' ? (
                     <ul
                         className={`flex flex-col justify-between flex-no-wrap gap-2 items-start ${PADDING}`}
                     >

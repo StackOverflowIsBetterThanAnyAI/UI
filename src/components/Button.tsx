@@ -105,6 +105,7 @@ const Button: FC<
         switch (screenWidth) {
             case 'MOBILE':
                 return 25
+            case 'TABLET SMALL':
             case 'TABLET':
                 return 35
             case 'DESKTOP':
