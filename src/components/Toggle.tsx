@@ -138,13 +138,18 @@ const Toggle: FC<ToggleProps & ConditionalInfoProps> = ({
 
     const iconOn = () => {
         return imageOn ? (
-            <Image alt="" src={imageOn.src} height={imageSize} />
+            <Image alt="" src={imageOn.src} height={imageSize} loading="lazy" />
         ) : undefined
     }
 
     const iconOff = () => {
         return imageOff ? (
-            <Image alt="" src={imageOff.src} height={imageSize} />
+            <Image
+                alt=""
+                src={imageOff.src}
+                height={imageSize}
+                loading="lazy"
+            />
         ) : undefined
     }
 

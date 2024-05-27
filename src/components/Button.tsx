@@ -174,6 +174,7 @@ const Button: FC<
                             src={icon.src}
                             alt={icon.alt}
                             height={imageSize}
+                            loading="lazy"
                         />
                         {!buttonIsSmall && (
                             <div
@@ -206,6 +207,7 @@ const Button: FC<
                             src={icon.src}
                             alt={icon.alt}
                             height={imageSize}
+                            loading="lazy"
                         />
                         {!buttonIsSmall && (
                             <div

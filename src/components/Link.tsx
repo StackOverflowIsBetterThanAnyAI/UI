@@ -189,6 +189,7 @@ const Link: FC<ButtonProps & ConditionalLabelProps> = ({
                             src={icon.src}
                             alt={icon.alt}
                             height={imageSize}
+                            loading="lazy"
                         />
                         {!buttonIsSmall && (
                             <div
