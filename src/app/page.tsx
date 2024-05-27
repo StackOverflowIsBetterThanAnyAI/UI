@@ -13,7 +13,7 @@ import sport1Icon from './sport1.png'
 export default function Home() {
     return (
         <>
-            <main className="flex flex-col items-center p-24 bg-red-300 max-w-screen-lg w-full m-auto min-h-96"></main>
+            <main className="flex flex-col items-center p-24 bg-red-300 max-w-screen-lg w-full m-auto min-h-96 min-w-64"></main>
             <Footer
                 logo={{
                     src: sport1Icon,

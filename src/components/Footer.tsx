@@ -66,7 +66,11 @@ const Footer: FC<FooterProps> = ({
             ) : undefined}
             {sponsors ? (
                 <div>
-                    <ul className={`flex justify-between flex-wrap ${PADDING}`}>
+                    <ul
+                        className={`flex ${
+                            screenWidth === 'MOBILE' && 'flex-col w-52 m-auto'
+                        } justify-between flex-wrap ${PADDING}`}
+                    >
                         {sponsors.map((sponsor) => {
                             return (
                                 <li key={sponsor.href}>
