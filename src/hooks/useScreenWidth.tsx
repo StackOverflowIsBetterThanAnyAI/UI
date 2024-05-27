@@ -13,7 +13,7 @@ export const useScreenWidth = ():
         const handleScreenWidth = () => {
             if (window.innerWidth < 384) {
                 setScreenWidth('MOBILE')
-            } else if (window.innerWidth < 640) {
+            } else if (window.innerWidth < 768) {
                 setScreenWidth('TABLET SMALL')
             } else if (window.innerWidth < 1024) {
                 setScreenWidth('TABLET')

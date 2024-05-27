@@ -2,7 +2,7 @@ MOBILE:
     < 384px
 
 TABLET SMALL:
-    < 640px
+    < 768px
 
 TABLET:
     < 1024px
