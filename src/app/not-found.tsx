@@ -1,3 +1,5 @@
+'use client'
+
 import Link from '@/components/Link'
 import Sport1Footer from '@/components/Sport1Footer'
 

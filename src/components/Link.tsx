@@ -4,7 +4,6 @@ import Image from 'next/image'
 import { useResize } from '@/hooks/useResize'
 import { useScreenWidth } from '@/hooks/useScreenWidth'
 import { accessibleText } from '@/helper/accessibleText'
-import { Link as RouterLink } from 'react-router-dom'
 
 // TODO: implement react router
 
@@ -172,8 +171,8 @@ const Link: FC<ButtonProps & ConditionalLabelProps> = ({
     }
 
     return (
-        <RouterLink
-            to={disabled ? undefined : href}
+        <a
+            href={disabled ? undefined : href}
             className={buttonClassName}
             onMouseDown={onClick && handleOnClick}
             onKeyDown={handleOnKeyDownAnchor}
@@ -205,7 +204,7 @@ const Link: FC<ButtonProps & ConditionalLabelProps> = ({
                 )}
                 {!icon && <div style={truncateText}>{children}</div>}
             </div>
-        </RouterLink>
+        </a>
     )
 }
 

@@ -2,6 +2,7 @@ import { Icon } from '@/types/types'
 import { FC } from 'react'
 import Link from './Link'
 import { useScreenWidth } from '@/hooks/useScreenWidth'
+import { formatURL } from '@/helper/formatURL'
 
 type FooterProps = {
     content: FooterColumnProps[]
@@ -128,14 +129,7 @@ const FooterColumn: FC<
     const sortedItems = items.map((item) => {
         return (
             <li key={item} className="px-4 py-2">
-                <Link
-                    href={item
-                        .toLowerCase()
-                        .split(' ')
-                        .join('-')
-                        .replace('+', 'plus')}
-                    theme={theme}
-                >
+                <Link href={formatURL(item)} theme={theme}>
                     {item}
                 </Link>
             </li>
