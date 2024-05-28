@@ -128,7 +128,14 @@ const FooterColumn: FC<
     const sortedItems = items.map((item) => {
         return (
             <li key={item} className="px-4 py-2">
-                <Link href={item} theme={theme}>
+                <Link
+                    href={item
+                        .toLowerCase()
+                        .split(' ')
+                        .join('-')
+                        .replace('+', 'plus')}
+                    theme={theme}
+                >
                     {item}
                 </Link>
             </li>
