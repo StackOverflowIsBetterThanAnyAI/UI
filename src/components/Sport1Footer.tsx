@@ -13,19 +13,19 @@ const Sport1Footer = () => {
         <Footer
             logo={{
                 src: sport1Icon,
-                alt: 'Zur Startseite',
+                alt: 'Back to the homepage',
                 href: '#',
             }}
             theme="yellow"
             copyrightHolder="Sport1 GmbH"
             content={[
                 {
-                    header: 'Sportarten',
+                    header: 'Sports',
                     items: [
-                        'Fußball',
+                        'Football',
                         'Motorsport',
                         'Darts',
-                        'US-Sport',
+                        'US-Sports',
                         'Olympia',
                     ],
                 },
@@ -36,8 +36,8 @@ const Sport1Footer = () => {
                 {
                     header: 'Video',
                     items: [
-                        'Mediathek',
-                        'Livestream',
+                        'Media Library',
+                        'Livestreams',
                         'Podcasts',
                         'Doppelpass',
                     ],
@@ -53,22 +53,22 @@ const Sport1Footer = () => {
                     ],
                 },
                 {
-                    header: 'Mehr',
+                    header: 'More',
                     items: [
-                        'TV-Programm',
-                        'Sportquiz',
-                        'Tippspiel',
-                        'Sportwetten',
-                        'Sport1 Akademie',
+                        'TV Program',
+                        'Sports Quiz',
+                        'Predictions',
+                        'Sports Betting',
+                        'Sport1 Academy',
                     ],
                 },
                 {
-                    header: 'Über uns',
+                    header: 'About',
                     items: [
-                        'Unternehmen',
-                        'Karriere',
-                        'Kontakt',
-                        'Presse',
+                        'Company',
+                        'Carrier',
+                        'Contact',
+                        'Press',
                         'Sport1 Business',
                     ],
                 },
@@ -112,22 +112,22 @@ const Sport1Footer = () => {
                 },
             ]}
             footerLinks={[
-                { href: 'Impressum', title: 'Impressum' },
+                { href: 'imprint', title: 'Imprint' },
                 {
-                    href: 'Datenschuthinweise',
-                    title: 'Datenschutzhinweise',
+                    href: 'privacy-policy-information',
+                    title: 'Privacy Policy Information',
                 },
                 {
-                    href: 'Datenschutzeinstellungen',
-                    title: 'Datenschutzeinstellungen',
+                    href: 'privacy-policy-settings',
+                    title: 'Privacy Policy Settings',
                 },
                 {
-                    href: 'Nutzungsbedingungen',
-                    title: 'Nutzungsbedingungen',
+                    href: 'terms-of-use',
+                    title: 'Terms of Use',
                 },
                 {
-                    href: 'Nutzung-mit-Werbung-beenden',
-                    title: 'Nutzung mit Werbung beenden',
+                    href: 'end-usage-with-ads',
+                    title: 'End Usage with Ads',
                 },
             ]}
         />

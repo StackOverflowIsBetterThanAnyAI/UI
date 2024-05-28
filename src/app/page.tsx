@@ -1,19 +1,12 @@
 'use client'
 
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import Homepage from '@/pages/Homepage'
+import { RouterProvider } from 'react-router-dom'
+import { routes } from '@/routes/routes'
 
 export default function Home() {
-    const router = createBrowserRouter([
-        {
-            path: '/',
-            element: <Homepage />,
-        },
-    ])
-
     return (
         <>
-            <RouterProvider router={router} />
+            <RouterProvider router={routes} />
         </>
     )
 }

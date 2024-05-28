@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { useResize } from '@/hooks/useResize'
 import { useScreenWidth } from '@/hooks/useScreenWidth'
 import { accessibleText } from '@/helper/accessibleText'
+import { Link as RouterLink } from 'react-router-dom'
 
 // TODO: implement react router
 
@@ -16,7 +17,7 @@ const COLOR_VARIANTS = {
     red_disabled: 'decoration-red-400',
     red_text: 'text-stone-50',
 
-    yellow: 'decoration-yellow-400 hover:decoration-yellow-500 active:decoration-yellow-600 focus:outline-yellow-400 focus:outline active:ring-2 ring-yellow-600',
+    yellow: 'decoration-yellow-400 hover:decoration-yellow-600 active:decoration-yellow-700 focus:outline-yellow-400 focus:outline active:ring-2 ring-yellow-600',
     yellow_disabled: 'decoration-yellow-500',
     yellow_text: 'text-stone-50',
 
@@ -171,8 +172,8 @@ const Link: FC<ButtonProps & ConditionalLabelProps> = ({
     }
 
     return (
-        <a
-            href={disabled ? undefined : href}
+        <RouterLink
+            to={disabled ? undefined : href}
             className={buttonClassName}
             onMouseDown={onClick && handleOnClick}
             onKeyDown={handleOnKeyDownAnchor}
@@ -190,6 +191,7 @@ const Link: FC<ButtonProps & ConditionalLabelProps> = ({
                             alt={icon.alt}
                             height={imageSize}
                             loading="lazy"
+                            className="hover:opacity-80"
                         />
                         {!buttonIsSmall && (
                             <div
@@ -203,7 +205,7 @@ const Link: FC<ButtonProps & ConditionalLabelProps> = ({
                 )}
                 {!icon && <div style={truncateText}>{children}</div>}
             </div>
-        </a>
+        </RouterLink>
     )
 }
 
